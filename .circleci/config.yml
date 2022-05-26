@@ -1,0 +1,23 @@
+# Copyright (c) 2022 Patrick Diehl
+
+version: 2
+jobs:
+    build:
+        machine:
+            image: ubuntu-2004:202008-01
+        environment:
+            IMAGE_FOLDER_NAME: Docker
+            IMAGE_NAME: diehlpk/parallelbook:latest
+        steps:
+            - checkout
+            - run:
+                name: Building Docker Image
+                command: |
+                    docker build -t ${IMAGE_NAME} ${IMAGE_FOLDER_NAME}
+                    docker images
+            - deploy:
+                command: |
+                    if [ "${CIRCLE_BRANCH}" == "main" ]; then
+                        docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+                        docker push ${IMAGE_NAME}
+                    fi
