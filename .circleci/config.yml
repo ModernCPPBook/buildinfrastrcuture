@@ -4,7 +4,7 @@ version: 2
 jobs:
     build:
         machine:
-            image: ubuntu-2004:202008-01
+            image: ubuntu-2004:202201-02
         environment:
             IMAGE_FOLDER_NAME: Docker
             IMAGE_NAME: diehlpk/parallelbook:latest
