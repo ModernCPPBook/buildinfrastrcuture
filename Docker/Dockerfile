@@ -1,4 +1,4 @@
-From fedora:35
+From fedora:36
 MAINTAINER Patrick Diehl <patrickdiehl@lsu.edu>
 
 RUn dnf update --refresh -y
